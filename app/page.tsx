@@ -6,6 +6,7 @@ const navigation = [
 	{ name: "Posts", href: "/projects" },
 	{ name: "About", href: "/about" },
 	{ name: "Contact", href: "/contact" },
+	{ name: "Test Home", href: "/testhome" },
 	{ name: "Resume", href: "https://drive.google.com/file/d/1Hofv2lu-seJlFWAiysLajTocpgXQULrb/view?usp=drive_link" },
 ];
 

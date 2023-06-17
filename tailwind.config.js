@@ -42,6 +42,7 @@ module.exports = {
 				"fade-left": "fade-left 3s ease-in-out forwards",
 				"fade-right": "fade-right 3s ease-in-out forwards",
 			},
+			
 			keyframes: {
 				"fade-in": {
 					"0%": {
