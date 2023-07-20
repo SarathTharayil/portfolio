@@ -19,7 +19,7 @@ export default function Home() {
           <h1 className="z-10 text-4xl sm:text-6xl md:text-9xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display sm:whitespace-nowrap bg-clip-text">
             Sarath Tharayil
           </h1>
-          <p className="my-8 sm:my-16 animate-fade-in text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300">Welcome to my place on the internet</p>
+          <p className="my-8 sm:my-16 animate-fade-in text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300">Welcome to my place on the internet!</p>
         </div>
       </div>
     </div>
