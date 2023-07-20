@@ -43,12 +43,17 @@ export default async function ProjectsPage() {
 		<div className="relative pb-16">
 			<Navigation />
 			<div className="px-6 pt-16 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
+			<p className="mt-4 text-zinc-400">
+			</p>
 				<div className="max-w-2xl mx-auto lg:mx-0">
 					<h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-						Blog
+						Posts
 					</h2>
-					<p className="mt-4 text-zinc-400">
-						These are random projects which came when I imported the theme! Need to chnage them :P.
+					<p className="mt-4 text-xl ont-bold tracking-tight text-zinc-200">
+					These are some articles I have written for this blog.
+					</p>
+					<p className="mt-2 text-xs text-zinc-400">
+					Some posts are just for me to remember stuff (I usually forget what I did or how did I configure libraries or frameworks).
 					</p>
 				</div>
 				<div className="w-full h-px bg-zinc-800" />
