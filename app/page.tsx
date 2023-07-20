@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
       <Navigation />
-      <div className="z-10 w-full max-w-xl px-5 xl:px-0 animate-fade-in">
+      <div className="z-10 w-full max-w-xl px-5 xl:px-0 ">
       <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={100} />
       <a
       href="https://twitter.com/SarathTharayil"
