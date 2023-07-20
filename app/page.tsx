@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { Github, Mail, Twitter } from "lucide-react";
+import { Github, Instagram, Mail, Twitter } from "lucide-react";
 import { Navigation } from "./components/homenav";
 import Particles from "./components/particles";
 import profileImage from '../public/me.jpg'; // Import your profile image
@@ -14,7 +14,7 @@ export default function Home() {
       <div className="z-10 w-full max-w-xl px-5 xl:px-0 animate-fade-in">
       <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={100} />
       <a
-      href="https://twitter.com/steventey/status/1613928948915920896"
+      href="https://twitter.com/SarathTharayil"
       target="_blank"
       rel="noreferrer"
       className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
@@ -35,10 +35,36 @@ export default function Home() {
     >
         I'm a designer, developer, and data science student at The University of Sheffield.
     </p>
+    <div
+          className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5"
+          style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
+        >
+          <a
+            className="overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
+            href="https://www.twitter.com/SarathTharayil"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Twitter className="h-5 w-5 text-[#1d9bf0]" />
+          </a>
+          <a
+            className="overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
+            href="https://www.github.com/SarathTharayil"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github className="h-5 w-5 text-[#1d9bf0]" />
+          </a>
+          <a
+            className="overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
+            href="https://www.instagram.com/Sarath_Tharayil"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Instagram className="h-5 w-5 text-[#1d9bf0]" />
+          </a>
+          </div>
     </div>
     </div>
   );
 }
-
-
-//<Twitter className="h-5 w-5 text-[#1d9bf0]" />
