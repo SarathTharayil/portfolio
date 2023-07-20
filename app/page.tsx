@@ -4,8 +4,8 @@ import React from "react";
 import { Github, Instagram, Mail, Twitter } from "lucide-react";
 import { Navigation } from "./components/homenav";
 import Particles from "./components/particles";
-import profileImage from '../public/me.jpg'; // Import your profile image
 import { Card } from './components/card';
+
 
 export default function Home() {
   return (
