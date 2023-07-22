@@ -1,0 +1,157 @@
+---
+title: Uni Marks Calculator
+description: Building a Streamlit App for calculating overall marks for a student enrolled in the Data Science Master's Program
+date: "2023-07-22"
+url: https://uos-marks-calculator.streamlit.app/
+published: true
+repository: https://github.com/SarathTharayil/uni_marks_calculator/
+  
+---
+
+## Introduction
+As a student pursuing a Master's in Data Science from the prestigious University of Sheffield, managing coursework and assessing academic progress is of utmost importance. In any Data Science program, there are numerous modules with various assessments and credits associated with each. Keeping track of weighted marks can be challenging, but fear not! I have developed a handy and user-friendly Streamlit app that will help you effortlessly calculate your weighted marks for different modules.
+
+## Introducing the "Uni Marks Calculator" App
+The "Uni Marks Calculator" app is a powerful tool designed to simplify the process of calculating weighted marks for your Master's in Data Science program at the University of Sheffield. With this app, you can dynamically calculate your overall marks based on module scores, credits, and assessment weights. Let's dive into the features and functionalities of this app.
+
+## Features and Functionalities
+User-Friendly Interface: The app is built on Streamlit, a popular Python library for creating interactive web applications. The interface is simple, intuitive, and responsive, ensuring a seamless user experience.
+
+```python
+import streamlit as st
+```
+In this section of the code, we import the necessary streamlit library to build the user interface.
+
+Flexible Parameter Selection: The app allows you to modify specific parameters related to the credits and weights for each module. You can easily adjust the credits and weights based on the latest curriculum or your individual preferences.
+
+```python
+# Default parameters for Group 1 (subjects_1)
+default_subjects_1_credits = [15, 15, 15, 15, 15]
+default_subjects_1_weights1 = [0.15, 0.2, 0.3, 0.1, 0.15]
+default_subjects_1_weights2 = [0.85, 0.8, 0.7, 0.9, 0.85]
+
+# Default parameters for Group 2 (subjects_2)
+default_subjects_2_credits = [15, 15, 15, 15, 45]
+default_subjects_2_weights = [0.8, 0.8, 0.8, 0.8, 0.8]
+
+```
+Here, we set the default credits and weights for the modules in Group 1 and Group 2.
+
+```python
+# Adding a horizontal line in the sidebar for visual separation
+st.sidebar.markdown("<hr>", unsafe_allow_html=True)
+
+```
+
+In this part of the code, we add a horizontal line to visually separate the sidebar elements.
+```python
+# Sidebar section: Select a parameter to modify
+parameter_to_modify = st.sidebar.selectbox("Select Parameter to Modify",
+                                           ["Select One", "Group 1 Credits", "Group 1 Weights 1", "Group 1 Weights 2",
+                                            "Group 2 Credits", "Group 2 Weights"])
+
+```
+
+In this part, the user can select a parameter to modify using the selectbox function from the Streamlit sidebar.
+
+```python
+# If the user selects "Group 1 Credits," allow them to modify the credits for Group 1 modules
+if parameter_to_modify == "Group 1 Credits":
+    subjects_1_credits = [st.sidebar.number_input(f"Credits for {subject}:", value=default_subjects_1_credits[i])
+                          for i, subject in enumerate(
+                              ["Data and Society", "Data Analysis", "Business Intelligence", "Database Design", "DPrep"])]
+else:
+    subjects_1_credits = default_subjects_1_credits.copy()
+
+
+```
+
+In this code block, if the user selects "Group 1 Credits" in the sidebar, they can modify the credits for each module in Group 1. Otherwise, the default credits are used.
+```python
+# If the user selects "Group 1 Weights 1," allow them to modify the weights for Group 1 assessments (weights1)
+if parameter_to_modify == "Group 1 Weights 1":
+    subjects_1_weights1 = [st.sidebar.number_input(f"Weight for {subject} {mark_type}:",
+                                                   value=default_subjects_1_weights1[i])
+                           for i, (subject, mark_type) in enumerate(
+                               zip(["Data and Society", "Data Analysis", "Business Intelligence", "Database Design", "DPrep"],
+                                   ["Engagement", "Presentation", "Infographic", "Quizzes", "Reading Record"]))]
+else:
+    subjects_1_weights1 = default_subjects_1_weights1.copy()
+
+```
+In this code block, if the user selects "Group 1 Weights 1" in the sidebar, they can modify the weights for the assessments in Group 1. The Streamlit number_input function allows them to enter the weights for each assessment. If the user doesn't select this option, the default weights are used.
+
+```python
+# If the user selects "Group 1 Weights 2," allow them to modify the weights for Group 1 assessments (weights2)
+if parameter_to_modify == "Group 1 Weights 2":
+    subjects_1_weights2 = [st.sidebar.number_input(f"Weight for {subject} {mark_type}:",
+                                                   value=default_subjects_1_weights2[i])
+                           for i, (subject, mark_type) in enumerate(
+                               zip(["Data and Society", "Data Analysis", "Business Intelligence", "Database Design", "DPrep"],
+                                   ["Essay", "Individual Report", "Company Report", "Exam", "Proposal"]))]
+else:
+    subjects_1_weights2 = default_subjects_1_weights2.copy()
+```
+Similar to the previous code block, this section allows the user to modify the weights for the assessments in Group 1 if they select "Group 1 Weights 2" in the sidebar.
+
+```python
+# Get user input for subjects_1_marks1 and subjects_1_marks2
+for i in range(len(subjects_1)):
+    with col1:
+        subject_1_mark1 = st.text_input(f"{subjects_1[i]} {subjects_1_marks1_name[i]}:", value='0')
+        subjects_1_marks1.append(int(subject_1_mark1))
+    with col2:
+        subject_1_mark2 = st.text_input(f"{subjects_1[i]} {subjects_1_marks2_name[i]}:", value='0')
+        subjects_1_marks2.append(int(subject_1_mark2))
+```
+In this code block, we use a loop to get user input for the marks of assessments in Group 1. The text_input function is used to take the user's input, and the marks are appended to the respective lists (subjects_1_marks1 and subjects_1_marks2) based on the assessment type (e.g., "Engagement," "Presentation").
+
+```python
+col1, col2 = st.columns(2)
+# Get user input for subjects_2_marks
+for i in range(len(subjects_2)):
+    with col1:
+        if i % 2 == 1 and subjects_2[i] != "Dissertation":
+            subject_2_mark = st.text_input(f"{subjects_2[i]}:", value='0')
+            subjects_2_marks.append(int(subject_2_mark))
+    with col2:
+        if i % 2 == 0 and subjects_2[i] != "Dissertation":
+            subject_2_mark = st.text_input(f"{subjects_2[i]}:", value='0')
+            subjects_2_marks.append(int(subject_2_mark))
+
+subject_2_mark = st.text_input(f"{subjects_2[4]}:", value='0')
+subjects_2_marks.append(int(subject_2_mark))
+```
+In this section, we again use a loop to get user input for the marks of assessments in Group 2. However, since Group 2 modules have only one assessment each, we use st.columns(2) to place the input fields side by side.
+
+```python
+# Calculating the weighted marks for Group 1 modules
+for i in range(len(subjects_1)):
+    subjects_1_marks[i] = subjects_1_marks1[i] * subjects_1_weights1[i] + subjects_1_marks2[i] * subjects_1_weights2[i]
+    subjects_1_weighted_marks[i] = (subjects_1_marks[i] * subjects_1_credits[i]) / 180
+
+# Calculating the weighted marks for Group 2 modules
+for i in range(len(subjects_2)):
+    subjects_2_weighted_marks[i] = (subjects_2_marks[i] * subjects_2_credits[i]) / 180
+    total_marks += subjects_1_weighted_marks[i] + subjects_2_weighted_marks[i]
+```
+
+In this section, we calculate the weighted marks for Group 1 and Group 2 modules based on the user's input. The weighted marks are calculated by multiplying the marks obtained in each assessment by its corresponding weight and then dividing by the total credits of the module.
+
+Finally, we sum up the weighted marks of all modules to obtain the total_marks variable, which represents the overall score.
+
+```python
+# Update the Overall marks based on the calculated total_marks
+overall_text.markdown("<h5 style='text-align: center;'>Your score:</h5><h3 style='text-align: center;'> {:.1f}</h3>".format(total_marks), unsafe_allow_html=True)
+```
+
+In this section, we update the overall score displayed in the app using the overall_text variable, which reflects the calculated total_marks.
+
+```python
+if __name__ == "__main__":
+    main()
+```
+
+This final part ensures that the main function is executed only when the script is run directly (not imported as a module). It is the entry point to the Streamlit app, and the main() function is called to start the app's execution.
+
+That concludes the explanation of the entire Python code for the Streamlit app to calculate weighted marks. The app provides a user-friendly interface to modify credits and weights and dynamically calculates the overall marks based on user input. This tool is a valuable asset for students pursuing the Master's in Data Science program at the University of Sheffield, assisting them in effectively managing their academic progress.
